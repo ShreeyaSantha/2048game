@@ -132,6 +132,58 @@ function moveright() {
 }
 
 
+function moveup() {
+    for (let i= 0; i < 4; ++i){
+
+        //building columns 
+        let column = [];
+        for (let j = 0; j < 4; ++j) {
+            if (board[j][i] != 0){
+                    column.push(board[j][i]);
+            }
+        }
+        //Merging columns 
+        let mergedarr = merge(column)
+        //Adding zeros back 
+        while (mergedarr.length < 4) {
+            mergedarr.push(0)
+        }
+        console.log(mergedarr)
+
+        //"copying column back to board + date tiles"
+        for (let j = 0; j < 4; ++j) {
+            updatetile(j,i,mergedarr[j])
+        }
+
+        console.log(board)
+    }
+
+}
+
+function movedown() {
+    for(let i = 0; i < 4; ++i) {
+         //building columns 
+         let column = [];
+         for (let j = 0; j < 4; ++j) {
+             if (board[j][i] != 0){
+                     column.push(board[j][i]);
+             }
+         }
+         //Merging columns 
+         let mergedarr = merge(column)
+
+         while(mergedarr.length < 4) {
+            mergedarr.unshift(0)
+         }
+         console.log(mergedarr)
+
+         for(let j = 0; j < 4; ++j) {
+            updatetile(j,i,mergedarr[j])
+         }
+
+         console.log(board)
+    }
+}
 
 //start function 
 const start = document.querySelector(".start")
