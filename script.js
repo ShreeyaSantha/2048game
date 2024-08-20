@@ -61,3 +61,36 @@ async function addtile() {
 
    await new Promise(resolve => setTimeout(resolve, 0)); // This introduces a brief pause, ensuring the DOM update is completed.
 }
+
+const restart = ()=>{
+    //find all elemnts that do not equal zero
+    //changes class to v0
+    for(let i = 0; i < 4; ++i){
+        for(let j = 0; j < 4; ++j) {
+            if (board[i][j] != 0){
+                console.log(i,j)
+                updatetile(i,j,0)
+            }
+        }
+    }
+
+    document.querySelector(".score").innerHTML ="SCORE 0"
+}
+
+function merge(arr) {
+    //remove all 0
+    let newarr = arr.filter((value) => value != 0);
+    console.log(newarr)
+    for(let i = 0; i < newarr.length - 1; ++i){
+        if(newarr[i] == newarr[i + 1]){
+            newarr[i] += newarr[i + 1]
+            newarr[i + 1] = 0 
+        }
+    }
+    console.log(newarr)
+    
+    //remove all 0 after merging again 
+    return newarr.filter((value) => value != 0);
+
+
+}
