@@ -130,3 +130,43 @@ function moveright() {
     }
     console.log(board)
 }
+
+
+
+//start function 
+const start = document.querySelector(".start")
+start.addEventListener("click", () => {
+    restart()
+    addtile()
+    addtile()
+    game = true
+})
+
+document.addEventListener("keydown",(e) => {
+
+    if (!game) {
+        console.log("Please press start")
+        return; 
+    }
+    if (e.key === "ArrowUp") {
+    moveup()
+    console.log("up arrow pressed");
+  } else if (e.key === "ArrowDown") {
+    console.log("down arrow pressed");
+    movedown()
+  } else if (e.key === "ArrowLeft") {
+    moveleft()
+    console.log("left arrow pressed");
+  } else if (e.key === "ArrowRight") {
+    moveright()
+    console.log("right arrow pressed");
+  }
+  addtile()
+
+  gameover()
+})
+
+
+
+
+
