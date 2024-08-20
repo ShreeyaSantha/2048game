@@ -185,6 +185,20 @@ function movedown() {
     }
 }
 
+function gameover() {
+    let empty = []
+    for(let i = 0; i < 4; ++i){
+        for(let j = 0; j < 4; ++j) {
+            if (board[i][j] == 0){
+                empty.push([i,j])
+            }
+        }
+    }
+  if (empty.length != 0) {
+    return;
+  }
+}
+
 //start function 
 const start = document.querySelector(".start")
 start.addEventListener("click", () => {
