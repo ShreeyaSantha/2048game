@@ -197,6 +197,20 @@ function gameover() {
   if (empty.length != 0) {
     return;
   }
+  //check if there is possible points of merging 
+console.log("check possible merges")
+for (let i = 0; i < 4; ++i){
+    for (let j = 0; j < 3; ++j) {
+        if (board[i][j] == board[i][j+1]){
+            return; 
+        }
+        if (board[j][i] == board[j+1][i]){
+            return; 
+        }
+    }
+}
+console.log("Game over")
+alert("GAME OVER, click new game to try again")
 }
 
 //start function 
@@ -228,7 +242,6 @@ document.addEventListener("keydown",(e) => {
     console.log("right arrow pressed");
   }
   addtile()
-
   gameover()
 })
 
