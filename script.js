@@ -94,3 +94,39 @@ function merge(arr) {
 
 
 }
+
+
+function moveleft() {
+    for(let i = 0; i < 4; ++i){
+        let mergedarr = merge(board[i])
+        while (mergedarr.length < 4){
+            mergedarr.push(0)
+        }
+        board[i] = mergedarr
+
+        //update all tiles: 
+        for(let j = 0; j < 4; ++j){
+            updatetile(i,j,board[i][j])
+        }
+
+    }
+    console.log(board)
+}
+
+function moveright() {
+    for(let i = 0; i < 4; ++i){
+        let mergedarr = merge(board[i])
+        if(mergedarr.length == 3 && mergedarr.every((value) => mergedarr[i] === value)){
+            mergedarr.reverse
+        }
+        while(mergedarr.length < 4) {
+            mergedarr.unshift(0)
+        }
+        board[i] = mergedarr
+        for(let j = 0; j < 4; ++j){
+            updatetile(i,j,board[i][j])
+        }
+
+    }
+    console.log(board)
+}
